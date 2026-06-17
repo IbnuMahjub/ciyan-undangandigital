@@ -73,9 +73,11 @@
       <div class="row justify-content-center">
         <div class="col-md-8 text-center">
           <h2>Acara Pernikahan</h2>
-          <h3>Diselengarakan Pada tanggal 4 Juli di Bojong Gede, Kabupaten Bogor.</h3>
-          <p>Oleh Karena itu, dengan segala hormat, kami bermaksud untuk mengundang Bapak/Ibu, Saudara/i, untuk hadir
-            pada acara pernikahan kami.
+          <h3>Diselenggarakan Pada tanggal 4 Juli di Bojong Gede, Kabupaten Bogor.</h3>
+          <p>
+            Oleh karena itu, dengan segala hormat, kami bermaksud untuk mengundang
+            <span id="guest-pronoun">Bapak/Ibu/Saudara/i</span>
+            untuk hadir pada acara pernikahan kami.
           </p>
         </div>
       </div>
@@ -558,16 +560,19 @@
     const nama = urlParams.get('n') || '';
     const pronoun = urlParams.get('p') || 'Bapak/Ibu/Saudara/i';
 
+    // Ubah nama tamu
     const namaContainer = document.querySelector('.hero h4 span');
-    namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+    if (namaContainer) {
+      namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+    }
 
+    // Ubah title
     if (nama) {
       document.title = `Undangan Pernikahan Iyan & Suci - ${pronoun} ${nama}`;
     }
 
-    // Meta Description
+    // Ubah meta description
     const metaDesc = document.querySelector('meta[name="description"]');
-
     if (metaDesc) {
       metaDesc.setAttribute(
         'content',
@@ -575,7 +580,17 @@
       );
     }
 
-    document.querySelector('#nama').value = nama;
+    const guestPronoun = document.querySelector('#guest-pronoun');
+
+    if (guestPronoun) {
+      guestPronoun.textContent = `${pronoun} ${nama}`.trim();
+    }
+
+    // Isi form nama
+    const namaInput = document.querySelector('#nama');
+    if (namaInput) {
+      namaInput.value = nama;
+    }
   </script>
 
 </body>

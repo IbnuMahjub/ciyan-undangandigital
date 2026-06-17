@@ -5,6 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Iyan & Suci</title>
+  <meta name="description"
+  content="Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan Iyan & Suci. Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir dan memberikan doa restu.">
+
+  <meta name="keywords"
+    content="Undangan Pernikahan, Iyan dan Suci, Wedding Invitation, Pernikahan Iyan Suci">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -555,6 +560,20 @@
 
     const namaContainer = document.querySelector('.hero h4 span');
     namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+
+    if (nama) {
+      document.title = `Undangan Pernikahan Iyan & Suci - ${pronoun} ${nama}`;
+    }
+
+    // Meta Description
+    const metaDesc = document.querySelector('meta[name="description"]');
+
+    if (metaDesc) {
+      metaDesc.setAttribute(
+        'content',
+        `Kepada ${pronoun} ${nama}, kami mengundang Anda untuk menghadiri acara pernikahan Iyan & Suci. Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir dan memberikan doa restu.`
+      );
+    }
 
     document.querySelector('#nama').value = nama;
   </script>
